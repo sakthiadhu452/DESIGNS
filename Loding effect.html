@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div class="loader">
+
+</div>
+<h1>LOADING...</h1>
+    
+</body>
+<style>
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 300px;
+        background-color: cadetblue;
+    }
+    .loader{
+        color: white;
+        position: relative;
+        
+        width: 180px;
+        height: 180px;
+        background-color: rgba(78, 65, 65, 0.704);
+        border-radius: 50%;
+        box-shadow: 50px 0 10px rgba(155,89,182,1),0 50px 10px rgba(22,160,133,1),-50px 0 10px rgba(41,128,185,1),0 -50px 10px rgba(241,196,15,1),37.5px 37.5px 10px rgba(44,62, 80, 1),-37.5px -37.5px 10px rgba(211,84,0, 1),37.5px -37.5px 10px rgba(236,240,241,1),-37.5px 37.5px 10px rgba(192,57,1);
+  animation: loader 4s linear infinite;
+    }
+    h1{
+        color: white;
+        z-index: 3;
+    }
+    @keyframes loader{
+        0%{
+            transform: rotate(0deg);
+        }
+        50%{
+            transform: rotate(720deg);
+            box-shadow: 0 0 0 rgba(0, 0,0,0);
+        }
+        100%{
+            transform: rotate(720deg);
+        }
+
+    }
+    h1{
+        position: absolute;
+    z-index: 1;
+    font-family: monospace;
+    font-size: 20px;
+        color: white;
+    }
+
+</style>
+</html>
