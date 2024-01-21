@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a><span class="buy">buy</span><span class="now">now</span></a>
+</body>
+<style>
+    body{
+        display: flex;
+        justify-content: center;
+        margin-top: 300px;
+        background-color: cadetblue;
+        
+    }
+    a{
+        perspective: 1000px;
+        font-size: 60px;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    color: white;
+    background-color: black;
+    }
+    a .buy{
+        padding:  20px ;
+        background-color: #343A40;
+        
+    
+    }
+    a .now{
+        padding:  20px ;
+        background-color: #343A40;
+        
+    
+    }
+    a .now::before{
+        content: 'now';
+        padding: 20px;
+        background-color: #343A40;
+        right: 0;
+        top:-20px;
+        transform-origin: bottom;
+        transform: translateY(0) rotateX(0deg);
+        position: absolute;
+        transition: .5s;
+
+    }
+    a .buy::before{
+        content: 'buy';
+        padding: 20px;
+        background-color: #343A40;
+        left: 0;
+        top:-20px;
+        transform-origin: top;
+        transform: translateY(0) rotateX(0deg);
+        position: absolute;
+        transition: .5s;
+
+    }
+    a:hover .buy::before{
+        transform: translateY(100%) rotateX(90deg);
+
+
+    }
+    a:hover .now::before{
+        transform: translateY(-100%) rotateX(-90deg);
+
+
+    }
+    a .buy::after{
+        content: 'buy';
+        position: absolute;
+        padding: 20px;
+        left: 0;
+        background-color: #00AFB9;
+        top: -20px;
+        transform-origin: bottom;
+        transform: translateY(-100%) rotateX(90deg);
+        transition: .5s;
+    }
+    a:hover .buy::after{
+        transform: translateY(0) rotateX(0deg);
+    }
+    a .now::after{
+        content: 'now';
+        position: absolute;
+        padding: 20px;
+        right: 0;
+        background-color: #00AFB9;
+        top: -20px;
+        transform-origin: bottom;
+        transform: translateY(0) rotateX(90deg);
+        transition: .5s;
+    }
+    a:hover .now::after{
+        transform: translateY(0) rotateX(0deg);
+    }
+  
+</style>
+</html>
