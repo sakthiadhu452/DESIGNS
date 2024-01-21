@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clock
+    </title>
+    <link rel="stylesheet" type="text/css" href="java.css"></link>
+</head>
+<body>
+    <div class="clock">
+        <div class="min"></div>
+        <div class="hr"></div>
+        <div class="sec"></div>
+        <div class="number number1">1</div>
+        <div class="number number2">2</div>
+        <div class="number number3">3</div>
+        <div class="number number4">4</div>
+        <div class="number number5">5</div>
+        <div class="number number6">6</div>
+        <div class="number number7">7</div>
+        <div class="number number8">8</div>
+        <div class="number number9">9</div>
+        <div class="number number10">10</div>
+        <div class="number number11">11</div>
+        <div class="number number12">12</div>
+    </div>
+</body>
+<script src="java.js"></script>
+</html>
+
+
+<style>
+    
+
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+body{
+   
+    background-color: cadetblue;
+}
+.clock{
+    width: 250px;
+    height: 250px;
+    background-color: pink;
+    text-align: center;
+    border-radius: 50%;
+    position: relative;
+    border:2px rebeccapurple solid;
+}
+.clock .number{
+    --rotation:0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: rotate(var(--rotation));
+}
+.clock .number.number1{
+   --rotation:30deg;
+   
+}
+.clock .number.number2{
+    --rotation:60deg;
+ }
+ .clock .number.number3{
+    --rotation:90deg;
+ }
+ .clock .number.number4{
+    --rotation:120deg;
+ }
+ .clock .number.number5{
+    --rotation:150deg;
+ }
+ .clock .number.number6{
+    --rotation:180deg;
+ }
+ .clock .number.number7{
+    --rotation:210deg;
+ }
+ .clock .number.number8{
+    --rotation:240deg;
+ }
+ .clock .number.number9{
+    --rotation:270deg;
+ }
+ .clock .number.number10{
+    --rotation:300deg;
+ }
+ .clock .number.number11{
+    --rotation:330deg;
+ }
+ 
+
+ .min,.hr,.sec{
+    position: absolute;
+    --rotation:0;
+    bottom: 50%;
+    left: 50%;
+    z-index: 1;
+    transform-origin: bottom;
+    transform: translateX(-50%)rotate(calc(var(--rotation)*1deg));
+ }
+.min{
+    width: 5px;
+    height: 50%;
+    background-color: black;
+    
+    
+}
+.hr{
+    background-color: black;
+    height: 60px;
+    width: 8px;
+
+
+}
+.sec{
+background-color: red;
+width: 3px;
+height: 50%;
+
+
+}
+</style>
+
+
+<script>
+    setInterval(setclock,1000);
+const hr=document.querySelector(".hr");
+const min=document.querySelector(".min");
+const sec=document.querySelector(".sec");
+function setclock()
+{
+const currentDate =new Date();
+const secratio=currentDate.getSeconds()/60;
+const minratio=(secratio+currentDate.getMinutes())/60;
+const hrratio=(minratio+currentDate.getHours())/12;
+set(hr,hrratio);
+
+set(min,minratio);
+set(sec,secratio);
+
+}
+
+
+
+function set(element,roationratio){
+      element.style.setProperty("--rotation",roationratio*360);
+}
+setclock();
+</script>
