@@ -1,0 +1,229 @@
+<html>
+    <head>
+        <title>MAKE ME ALERT</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Mouse+Memoirs&display=swap');
+            </style>
+    </head>
+    <body>
+        <div class="top">
+             <div id="name">Calculate Distanc!</div>
+        </div>
+        <div class="container">
+            <div id="centre">
+            <div >
+                <h1>Range:</h1>
+                <br>
+                <input type="number" placeholder="enter the range to alarm you" id="range">
+            </div>
+            <br>
+            <div >
+                <h1>latitude:</h1>
+                <br>
+                <input type="number" placeholder="enter the latitude of your destination in meters" id="latitude">
+            </div>
+            <br>
+            <div >
+                <h1>longtitude:</h1>
+                <br>
+                <input type="number" placeholder="enter the lontitude of your destination in meters"id="longtitude" >
+                <br>
+                <br>
+                <br>
+                <br>
+                <button onclick="submit()">Find</button>
+                <br>
+                <br>
+                <br>
+                <p>Distance between you and your destination is:</p><h1 id="insert"></h1>
+                <br>
+                <p id="v"></p>
+                
+
+
+                
+            </div>
+            </div>
+            
+
+        </div>
+        <hr>
+        <div id="footer">
+  
+            <ion-icon name="logo-instagram" onclick="location.href='https://instagram.com/engal_nanban?igshid=YmMyMTA2M2Y='"></ion-icon>
+            <ion-icon name="logo-github"onclick="location.href='https://github.com/Sakthiadhavan/Sakthiadhavan/blob/96142441a6f89cb9309652216c5b4745c0d2b88c/prac.html'"></ion-icon>
+           <ion-icon name="logo-twitter"></ion-icon>
+           
+        <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script> 
+        </div>   
+    </body>
+    <style>
+        
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .top{
+            background-color: black;
+            width: 100%;
+            height: 60px;
+            position:sticky;
+            top:0;
+
+        }
+        #name{
+            width: 300px;
+            background-color: white;
+            height: 70%;
+            border-radius: 50px;
+            display: flex;
+            justify-content: center;
+            margin: auto;
+            transform: translateY(9px);
+            text-align: center;
+            align-items: center;
+            color: black;
+            font-family: 'Mouse Memoirs', sans-serif;
+            font-size: 30px;
+            
+
+        }
+        ion-icon{
+    width: 35px;
+    height: 35px;
+    padding-right: 100px;
+    margin-left: 100px;
+}
+#footer{
+    background-color: white;
+    text-align: center;
+    margin: auto;
+    font-weight: lighter;
+    color: black;
+    font-family: "sofia",sans-serif;
+    padding: 50px;
+}
+.container{
+    max-width: 700px;
+    
+    height:800px ;
+    margin: auto;
+    text-align: center;
+    align-items: center;
+}
+#centre{
+    margin-top:10%;
+}
+    input{
+        min-width: 500px;
+        height: 40px;
+        
+        font-size: 20px;
+        text-align: center;
+        
+    }
+    input:hover{
+        
+        border: 5px solid;
+        border-color:antiquewhite;
+    }
+    input:active{
+        border-color:antiquewhite;
+        border: 3px solid;
+    }
+    ::-webkit-input-placeholder{
+            font-size: 20px;
+            text-align: center;
+            color:rgb(19, 13, 31);
+            padding-top:  30px;
+            opacity: 50%;
+        }
+        button{
+    border-radius: 50px;
+    height: 50px;
+    width: 150px;
+    color: white;
+    background-color: orange;
+    
+}
+button:hover{
+    background-color: white;
+    color: orange;
+    cursor:pointer;
+}
+button:active{
+    border-color: orange;
+}
+
+
+    </style>
+    <script>
+      function submit()
+        {
+           var s=setInterval(jj,500);
+           jj(s);
+            
+        }
+    
+    function jj(s){
+
+
+if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(showPosition);
+} else { 
+  x.innerHTML = "Geolocation is not supported by this browser.";
+}
+const m=document.getElementById("range").value;
+
+function showPosition(position) {
+ lat1=position.coords.latitude ;
+ lon1=position.coords.longitude;
+}
+var lat2=document.getElementById("latitude").value;
+var lon2=document.getElementById("longtitude").value;
+
+distance(lat1,lon1,lat2,lon2,m)
+
+function distance(lat1, lon1, lat2, lon2,m) {
+  if ((lat1 == lat2) && (lon1 == lon2)) {
+      return 0;
+  }
+  else {
+      unit="K";
+      var radlat1 = Math.PI * lat1/180;
+      var radlat2 = Math.PI * lat2/180;
+      var theta = lon1-lon2;
+      var radtheta = Math.PI * theta/180;
+      var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+      if (dist > 1) {
+          dist = 1;
+      }
+      dist = Math.acos(dist);
+      dist = dist * 180/Math.PI;
+      dist = dist * 60 * 1.1515;
+      if (unit=="K") { dist = dist * 1.609344 }
+      if (unit=="N") { dist = dist * 0.8684 }
+      document.getElementById("insert").innerHTML=dist*1000+" meters away";
+      if((dist*1000)<m)
+      {
+        document.getElementById("v").innerHTML="stop vandhuruchu";
+       clearInterval(s);
+      }
+      else{
+        document.getElementById("v").innerHTML="on the way";
+        
+        
+      }
+      
+      
+  }
+}
+}
+        
+
+
+    </script>
+</html>
